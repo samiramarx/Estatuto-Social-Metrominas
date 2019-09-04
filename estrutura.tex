@@ -1,0 +1,52 @@
+\usepackage[utf8]{inputenc} % Permite caracteres acentuados
+
+\usepackage{fontspec} %Altera para fonte Metrominas
+\setmainfont{tw-cen-mt.ttf}[
+BoldFont = tw-cen-mt-bold.ttf ,
+ItalicFont = tw-cen-mt-italic.ttf,
+BoldItalicFont = tw-cen-mt-bold-italic.ttf ]
+
+\setlength{\parindent}{0pt} % Retira indentação dos parágrafos
+
+\usepackage{enumitem}
+\renewcommand*{\theenumi}{\thesection.\arabic{enumi}} % Permite numeração continuada a partir dos capítulos e seções.
+\renewcommand*{\theenumii}{\theenumi.\arabic{enumii}} % Permite numeração continuada a partir dos capítulos e seções.
+\usepackage{hyperref} % Utilizado no sistema de referência cruzada - vide arquivo "cross-reference.txt" 
+
+\usepackage[portuguese]{babel}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\setlength{\headheight}{26pt}
+\rhead{Trem Metropolitano de Belo Horizonte S.A.}
+\lhead{}
+
+\setlength\parskip{2ex} % Inclui espaço entre parágrafos
+
+\usepackage{titlesec} % Número e nome dos capítulos e seções na mesma linha
+\titleformat{\chapter}[hang]
+{\normalfont\normalsize\bfseries}{CAPÍTULO \thechapter.}{0.5em}{}
+\titlespacing*{\chapter}{0pt}{10pt}{10pt}
+
+\titleformat{\section}[hang]
+{\normalfont\normalsize\bfseries}{Seção \thesection.}{0.5em}{}
+
+\usepackage{titletoc}%
+\titlecontents{chapter}% <section-type>
+  [0pt]% <left>
+  {\bfseries}% <above-code>
+  {\chaptername\ \thecontentslabel.\quad}% <numbered-entry-format>
+  {}% <numberless-entry-format>
+  {\hfill\contentspage}% <filler-page-format>
+
+
+\renewcommand{\thechapter}{\Roman{chapter}} %Altera numeração de capítulos para números romanos
+\renewcommand{\thesection}{\Roman{section}} %Altera numeração de seções para números romanos
+\renewcommand{\thesubsection}{\Roman{subsection}} %Altera numeração de subseções para números romanos
+
+%\renewcommand*\thesection{\arabic{section}} %Altera numeração de seções para não estarem vinculadas aos números dos capítulos
+
+% para evitar quebra de página após capítulo
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\chapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+\makeatother
